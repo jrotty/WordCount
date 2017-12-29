@@ -4,7 +4,7 @@
  *
  * @package <font color="red">WordCount</font>
  * @author Jrotty
- * @version 1.3
+ * @version 1.2
  * @link http://qqdie.com
  */
 class WordCount_Plugin implements Typecho_Plugin_Interface
@@ -25,8 +25,6 @@ class WordCount_Plugin implements Typecho_Plugin_Interface
 		Typecho_Plugin::factory('admin/write-post.php')->bottom = array('WordCount_Plugin', 'num');
 		Typecho_Plugin::factory('admin/write-page.php')->bottom = array('WordCount_Plugin', 'num');
 	}
-
-
 public static function num(){
 		?><style>
 .field.is-grouped{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;  -ms-flex-wrap: wrap;
@@ -48,15 +46,15 @@ public static function num(){
             obj['on' + EventType] = Handler;
         }
     }
-    if (document.querySelector('#wmd-preview')) {
-        EventUtil.addEventHandler(document.querySelector('#wmd-preview'), 'propertychange', CountChineseCharacters);
-        EventUtil.addEventHandler(document.querySelector('#wmd-preview'), 'input', CountChineseCharacters);
+    if (document.getElementById('text')) {
+        EventUtil.addEventHandler(document.getElementById('text'), 'propertychange', CountChineseCharacters);
+        EventUtil.addEventHandler(document.getElementById('text'), 'input', CountChineseCharacters);
     }
     function showit(Word) {
         alert(Word);
     }
     function CountChineseCharacters() {
-        Words = document.querySelector('#wmd-preview').textContent;
+        Words = document.getElementById('text').value;
         var W = new Object();
         var Result = new Array();
         var iNumwords = 0;
@@ -110,7 +108,6 @@ public static function num(){
         document.getElementById('zimu').innerText = znum;
         document.getElementById('shuzi').innerText = inum;
         document.getElementById("zifu").innerHTML = iTotal * 2 + (sTotal - iTotal) * 2 + eTotal;
-
     }
 </script>
 <script> 
@@ -128,7 +125,6 @@ tagsnum();
 </script>
 <?php
 }
-
 	
     /**
      * 获取插件配置面板
@@ -138,7 +134,6 @@ tagsnum();
      * @return void
      */
     public static function config(Typecho_Widget_Helper_Form $form){}
-
     /**
      * 个人用户的配置面板
      *
@@ -147,7 +142,6 @@ tagsnum();
      * @return void
      */
     public static function personalConfig(Typecho_Widget_Helper_Form $form){}
-
     /**
      * 禁用插件方法,如果禁用失败,直接抛出异常
      *
@@ -157,7 +151,4 @@ tagsnum();
      * @throws Typecho_Plugin_Exception
      */
     public static function deactivate(){}
-
-
-
 }
