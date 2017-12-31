@@ -5,7 +5,7 @@
  * @package <font color="red">WordCount</font>
  * @author Jrotty
  * @version 1.2
- * @link http://qqdie.com
+ * @link https://qqdie.com/archives/wordcount-typecho.html
  */
 class WordCount_Plugin implements Typecho_Plugin_Interface
 {
